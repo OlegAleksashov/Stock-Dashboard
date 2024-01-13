@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/stock-dashboard/static/css/main.270669d7.css",
+    "main.js": "/stock-dashboard/static/js/main.1a1edb92.js",
+    "index.html": "/stock-dashboard/index.html",
+    "main.270669d7.css.map": "/stock-dashboard/static/css/main.270669d7.css.map",
+    "main.1a1edb92.js.map": "/stock-dashboard/static/js/main.1a1edb92.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.270669d7.css",
+    "static/js/main.1a1edb92.js"
+  ]
+}
