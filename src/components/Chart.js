@@ -18,6 +18,7 @@ import {
   convertUnixTimestampToDate,
 } from "../utils/helpers/date-helper";
 import { chartConfig } from "../constants/config";
+import {mockHistoricalData} from '../constants/mock';
 
 const Chart = () => {
   const [filter, setFilter] = useState("1W");
@@ -26,7 +27,7 @@ const Chart = () => {
 
   const { stockSymbol } = useContext(StockContext);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(mockHistoricalData);
 
   const formatData = (data) => {
     return data.c.map((item, index) => {
@@ -49,24 +50,25 @@ const Chart = () => {
       return { startTimestampUnix, endTimestampUnix };
     };
 
-    const updateChartData = async () => {
-      try {
-        const { startTimestampUnix, endTimestampUnix } = getDateRange();
-        const resolution = chartConfig[filter].resolution;
-        const result = await fetchHistoricalData(
-          stockSymbol,
-          resolution,
-          startTimestampUnix,
-          endTimestampUnix
-        );
-        setData(formatData(result));
-      } catch (error) {
-        setData([]);
-        console.log(error);
-      }
-    };
+    // const updateChartData = async () => {
+    //   try {
+    //     const { startTimestampUnix, endTimestampUnix } = getDateRange();
+    //     const resolution = chartConfig[filter].resolution;
+    //     console.log(resolution, stockSymbol, startTimestampUnix, );
+    //     const result = await fetchHistoricalData(
+    //       stockSymbol,
+    //       resolution,
+    //       startTimestampUnix,
+    //       endTimestampUnix
+    //     );
+    //     setData(formatData(result));
+    //   } catch (error) {
+    //     setData([]);
+    //     console.log(error);
+    //   }
+    // };
 
-    updateChartData();
+    // updateChartData();
   }, [stockSymbol, filter]);
 
   return (
@@ -85,7 +87,7 @@ const Chart = () => {
         ))}
       </ul>
       <ResponsiveContainer>
-        <AreaChart data={data}>
+        <AreaChart data={formatData(data)}>
           <defs>
             <linearGradient id="chartColor" x1="0" y1="0" x2="0" y2="1">
               <stop

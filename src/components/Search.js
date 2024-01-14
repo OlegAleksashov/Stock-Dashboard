@@ -43,7 +43,7 @@ const Search = () => {
         }`}
         placeholder="Search stock..."
         onChange={(event) => setInput(event.target.value)}
-        onKeyPress={(event) => {
+        onKeyDown={(event) => {
           if (event.key === "Enter") {
             updateBestMatches();
           }
