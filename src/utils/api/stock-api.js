@@ -1,7 +1,8 @@
-const basePath = "https://finnhub.io/api/v1";
+const basePath = "https://www.alphavantage.co";
 
 export const searchSymbol = async (query) => {
-  const url = `${basePath}/search?q=${query}&token=${process.env.REACT_APP_API_KEY}`;
+  //const url = `${basePath}/search?q=${query}&token=${process.env.REACT_APP_API_KEY}`;
+  const url = `${basePath}/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${query}&apikey=${process.env.VITE_API_KEY}`;
   const response = await fetch(url);
 
   if (!response.ok) {
